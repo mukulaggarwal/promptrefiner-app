@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "PromptRefiner",
+  "version": "1.0",
+  "description": "Refine your prompts for better answers on any LLM UI.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.openai.com/*",
+        "https://*.perplexity.ai/*",
+        "https://claude.ai/*",
+        "https://*.anthropic.com/*",
+        "https://*.grok.com/*",
+        "https://*.deepseek.com/*",
+        "<all_urls>"
+      ],
+      "js": ["content_script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "PromptRefiner"
+  }
+}
